@@ -1,0 +1,19 @@
+# Renode Script for Virtual Biomedical Sensor-Node (nRF52840)
+
+using sysbus
+$name?="nrf52840"
+
+mach create $name
+machine LoadPlatformDescription @platforms/cpus/nrf52840.repl
+
+$bin?=@build/zephyr/zephyr.elf
+
+showAnalyzer uart0
+
+macro reset
+"""
+    sysbus LoadELF $bin
+"""
+
+runMacro $reset
+echo "Zephyr Biomedical Firmware Loaded into Renode Emulation Engine."

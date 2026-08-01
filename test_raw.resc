@@ -1,0 +1,6 @@
+mach create "nrf52840"
+machine LoadPlatformDescription @platforms/cpus/nrf52840.repl
+emulation CreateServerSocketTerminal 9999 "telemetry" False
+connector Connect sysbus.uart0 telemetry
+sysbus LoadELF @/home/hjafa/zephyr-sensor-node/build/zephyr/zephyr.elf
+start

@@ -1,0 +1,7 @@
+mach create
+machine LoadPlatformDescription @platforms/cpus/nrf52840.repl
+emulation CreateServerSocketTerminal 9999 "telemetry"
+connector Connect sysbus.uart0 telemetry
+showAnalyzer sysbus.uart0
+sysbus.uart0 WriteChar 65
+sysbus.uart0 WriteChar 10

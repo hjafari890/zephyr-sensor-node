@@ -1,0 +1,9 @@
+// Load the mock peripheral models onto the nRF52840 buses
+
+max30102: Miscellaneous.I2CDictionary @ i2c0 0x57
+
+bme680: Miscellaneous.I2CDictionary @ i2c0 0x76
+
+mlx90632: Miscellaneous.I2CDictionary @ i2c0 0x3a
+
+opt4001: Miscellaneous.I2CDictionary @ i2c0 0x44

@@ -1,0 +1,28 @@
+# Renode Script for Tachycardia Patient Scenario
+# This script loads the firmware and feeds anomalous biosignals to trigger an alarm.
+
+using sysbus
+
+# 1. Create the Virtual Machine
+mach create "nrf52840"
+
+# 2. Load the base nRF52840 platform
+machine LoadPlatformDescription @platforms/cpus/nrf52840.repl
+
+# 3. Configure the virtual UART to broadcast over a TCP socket (Port 9999)
+showAnalyzer sysbus.uart0
+emulation CreateServerSocketTerminal 9999 "telemetry" False
+connector Connect sysbus.uart0 telemetry
+
+# 4. Configure UART1 for the Input Simulator (Port 9998)
+emulation CreateServerSocketTerminal 9998 "input_sim" False
+connector Connect sysbus.uart1 input_sim
+
+# 5. Load the RTOS Firmware
+sysbus LoadELF @/home/hjafa/zephyr-sensor-node/build/zephyr/zephyr.elf
+
+# 6. Feed the anomaly (tachycardia) biosignal data into the simulation
+# (Note: Requires a sensor model with RESD support)
+# sysbus.i2c0.max30102 FeedSample @data/tachycardia_ppg.csv
+
+echo "Machine ready. Type 'start' to run the Tachycardia Scenario."
