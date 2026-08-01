@@ -1,0 +1,62 @@
+/* Nordic nRF52840 Devicetree Overlay */
+
+&i2c0 {
+    status = "okay";
+    clock-frequency = <I2C_BITRATE_FAST>;
+
+    max30102: max30102@57 {
+        status = "disabled";
+        compatible = "maxim,max30101";
+        reg = <0x57>;
+        label = "MAX30102_PPG";
+        acq-mode = "spo2";
+    };
+
+    /* Additional BME Shield Sensors (Node Stubs) */
+    bme680: bme680@76 {
+        status = "disabled";
+        compatible = "bosch,bme680";
+        reg = <0x76>;
+        label = "BME680_ENV";
+    };
+
+    mlx90632: mlx90632@3a {
+        status = "disabled";
+        compatible = "melexis,mlx90632";
+        reg = <0x3a>;
+        label = "MLX90632_TEMP";
+    };
+
+    opt4001: opt4001@44 {
+        status = "disabled";
+        compatible = "ti,opt4001"; /* Requires custom driver or generic I2C access if not in Zephyr */
+        reg = <0x44>;
+        label = "OPT4001_LIGHT";
+    };
+};
+
+&spi1 {
+    status = "okay";
+    cs-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>, <&gpio0 18 GPIO_ACTIVE_LOW>;
+
+    adxl362: adxl362@0 {
+        status = "disabled";
+        compatible = "adi,adxl362";
+        reg = <0>;
+        spi-max-frequency = <1000000>;
+        label = "ADXL362_IMU";
+    };
+
+    ads1292: ads1292@1 {
+        status = "disabled";
+        compatible = "vnd,ads1292"; /* Generic vendor compatible for emulation */
+        reg = <1>;
+        spi-max-frequency = <1000000>;
+        label = "ADS1292_ECG";
+    };
+};
+
+&uart1 {
+    status = "okay";
+    current-speed = <115200>;
+};

@@ -1,0 +1,50 @@
+/* TI CC2650 LaunchPad Devicetree Overlay */
+
+&i2c0 {
+    status = "okay";
+    
+    max30102: max30102@57 {
+        compatible = "maxim,max30101";
+        reg = <0x57>;
+        label = "MAX30102_PPG";
+        acq-mode = "spo2";
+    };
+
+    /* Additional BME Shield Sensors (Node Stubs) */
+    bme680: bme680@76 {
+        compatible = "bosch,bme680";
+        reg = <0x76>;
+        label = "BME680_ENV";
+    };
+
+    mlx90632: mlx90632@3a {
+        compatible = "melexis,mlx90632";
+        reg = <0x3a>;
+        label = "MLX90632_TEMP";
+    };
+
+    opt4001: opt4001@44 {
+        compatible = "ti,opt4001";
+        reg = <0x44>;
+        label = "OPT4001_LIGHT";
+    };
+};
+
+&spi0 {
+    status = "okay";
+    cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>, <&gpio0 12 GPIO_ACTIVE_LOW>;
+
+    adxl362: adxl362@0 {
+        compatible = "adi,adxl362";
+        reg = <0>;
+        spi-max-frequency = <1000000>;
+        label = "ADXL362_IMU";
+    };
+
+    ads1292: ads1292@1 {
+        compatible = "vnd,ads1292"; /* Generic vendor compatible */
+        reg = <1>;
+        spi-max-frequency = <1000000>;
+        label = "ADS1292_ECG";
+    };
+};
