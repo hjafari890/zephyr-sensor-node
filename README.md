@@ -1,7 +1,5 @@
 # Biomedical Sensor-Node Digital Twin
 
-![Biomedical Digital Twin Dashboard & HIL Simulator](docs/images/dashboard_preview.png)
-
 A fully interactive, end-to-end "Hardware-in-the-Loop" emulation of a biomedical sensor node. This project demonstrates how modern RTOS development can be decoupled from physical hardware using Zephyr and Renode.
 
 The goal? To build a system that acts, fails, and recovers just like a real medical wearable—but entirely in software.
@@ -30,3 +28,7 @@ By building a complete "Digital Twin", we can:
 - **Emulation**: Renode
 - **Visualization**: Python, PyQt5, PyQtGraph
 - **CI/CD**: GitHub Actions, Robot Framework
+
+## System Preview
+
+![Biomedical Digital Twin Dashboard & HIL Simulator](docs/images/dashboard_preview.png)
