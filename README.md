@@ -31,4 +31,4 @@ By building a complete "Digital Twin", we can:
 
 ## System Preview
 
-![Biomedical Digital Twin Dashboard & HIL Simulator](docs/images/dashboard_preview.png)
+<img src="docs/images/dashboard_preview.png" alt="Biomedical Digital Twin Dashboard & HIL Simulator" width="100%" />
