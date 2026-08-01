@@ -28,7 +28,3 @@ By building a complete "Digital Twin", we can:
 - **Emulation**: Renode
 - **Visualization**: Python, PyQt5, PyQtGraph
 - **CI/CD**: GitHub Actions, Robot Framework
-
-## System Preview
-
-<img src="docs/images/dashboard_preview.png" alt="Biomedical Digital Twin Dashboard & HIL Simulator" width="100%" />
